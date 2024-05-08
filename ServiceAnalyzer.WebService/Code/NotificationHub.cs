@@ -37,14 +37,10 @@ namespace ServiceAnalyzer.WebService.Code
             // Store the email address and connection ID mapping when a client connects
             try
             {
-                //TODO da cancellare i log quando funziona
-                _logger.Info("Context:" + JsonSerializer.Serialize(Context), _idService, ETipoLog.Info.ToString(), "OnConnectedAsync");
                 var httpContext = Context.GetHttpContext();
-                _logger.Info("HTTPContext:" + JsonSerializer.Serialize(Context), _idService, ETipoLog.Info.ToString(), "OnConnectedAsync");
                 var email = httpContext.Request.Query["username"].ToString();
-                _logger.Info("email:" + JsonSerializer.Serialize(Context), _idService, ETipoLog.Info.ToString(), "OnConnectedAsync");
                 var connectionId = Context.ConnectionId;
-                _logger.Info("connectionId:" + JsonSerializer.Serialize(Context), _idService, ETipoLog.Info.ToString(), "OnConnectedAsync");
+                _logger.Info("email: " + email +" connectionId:" + connectionId, _idService, ETipoLog.Info.ToString(), "OnConnectedAsync");
 
                 if (email != null)
                     _connectionMapping.Add(email, connectionId);

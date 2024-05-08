@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Options;
 using ServiceAnalyzer.WebService.Code;
 using ServiceAnalyzer.WebService.Config;
 
@@ -14,6 +15,7 @@ var cfgOptions = new ConfigurationOption();
 cfgOptions = builder.Configuration
                         .GetSection(nameof(ConfigurationOption))
                         .Get<ConfigurationOption>();
+builder.Services.AddSingleton(cfgOptions);
 builder.Services.AddCors();
 
 var app = builder.Build();
