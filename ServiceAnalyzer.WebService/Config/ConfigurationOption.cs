@@ -6,6 +6,5 @@ namespace ServiceAnalyzer.WebService.Config
     {
         public string ConnectionString { get; set; } = "";
         public int LogDaysBackup { get; set; }
-        public string BdmonitorAddress { get; set; } = "";
     }
 }

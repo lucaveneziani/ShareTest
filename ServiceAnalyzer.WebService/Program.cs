@@ -30,7 +30,13 @@ app.UseSwaggerUI();
 
 
 //set address of the client for signalIR outside of the current net
-app.UseCors(options => options.WithOrigins(cfgOptions.BdmonitorAddress).AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+//le origini vanno modificate per ogni ambiente in cui viene installato
+app.UseCors(options => 
+    options.WithOrigins("https://bdmonitor.fastera.net", "https://www.bdmonitor.it", "https://bdtest.fastera.net")
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials()
+);
 app.UseAuthorization();
 
 app.MapControllers();
